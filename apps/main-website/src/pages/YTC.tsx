@@ -53,7 +53,7 @@ export const YTC: React.FC = () => {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-primary-light to-brand-accent drop-shadow-sm">YouTube Content</span>
                     </h1>
                     <p className="mt-6 text-xl leading-relaxed text-brand-muted max-w-2xl mx-auto font-light">
-                        The first application in the Enjoyably ecosystem. Transform your ideas into polished, educational video content — scripts, storyboards, and optimized metadata — all powered by AI.
+                        The first application in the Enjoyably ecosystem. Transform your ideas into polished, educational video content: scripts, storyboards, and optimized metadata, all powered by AI.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a href="#waitlist" className="rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-brand-primary-hover hover:scale-105 hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">

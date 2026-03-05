@@ -70,7 +70,7 @@ export const EcosystemShowcase: React.FC = () => {
             <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-brand-primary font-bold tracking-widest uppercase text-sm">The Gateway</h2>
-                    <p className="mt-3 text-4xl font-extrabold tracking-tight text-brand-high sm:text-5xl">One Platform. Infinite Learning Modes.</p>
+                    <p className="mt-3 text-4xl font-extrabold tracking-tight text-brand-high sm:text-5xl">One Platform. Infinite Learning Potential.</p>
                     <p className="mt-6 text-lg leading-relaxed text-brand-muted max-w-xl mx-auto font-light">
                         Select the application that fits your audience. Each specialized tool uses our core AI engine to generate the perfect learning format.
                     </p>

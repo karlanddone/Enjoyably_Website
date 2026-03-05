@@ -26,7 +26,7 @@ const features = [
     },
     {
         title: 'Adaptive Quizzes',
-        description: 'Generate context-aware assessments — multiple choice, fill-in-the-blank, and practical exercises — that adapt in difficulty to validate true comprehension.',
+        description: 'Generate context-aware assessments (multiple choice, fill-in-the-blank, and practical exercises) that adapt in difficulty to validate true comprehension.',
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
@@ -85,7 +85,7 @@ export const Courses: React.FC = () => {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-brand-accent-light to-brand-primary drop-shadow-sm">Courses</span>
                     </h1>
                     <p className="mt-6 text-xl leading-relaxed text-brand-muted max-w-2xl mx-auto font-light">
-                        The ultimate engine for generating structured, multi-module learning courses and assessments. Turn any source material into a complete educational experience — automatically.
+                        The ultimate engine for generating structured, multi-module learning courses and assessments. Turn any source material into a complete educational experience, automatically.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a href="#waitlist" className="rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-brand-primary-hover hover:scale-105 hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">
@@ -105,7 +105,7 @@ export const Courses: React.FC = () => {
                     <div className="mx-auto max-w-2xl lg:text-center">
                         <h2 className="text-base font-semibold leading-7 text-brand-primary tracking-wide uppercase">Capabilities</h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight text-brand-high sm:text-4xl">Build complete courses from anything</p>
-                        <p className="mt-6 text-lg leading-8 text-brand-muted">From a single PDF to an entire knowledge base — the Courses engine structures, sequences, and assesses learning automatically.</p>
+                        <p className="mt-6 text-lg leading-8 text-brand-muted">From a single PDF to an entire knowledge base, the Courses engine structures, sequences, and assesses learning automatically.</p>
                     </div>
                     <motion.div variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
                         <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
