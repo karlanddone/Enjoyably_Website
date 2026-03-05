@@ -2,9 +2,9 @@
 
 ## 1. Product Overview
 The `enjoyably.app` main website is the marketing showcase and global navigation hub for the Enjoyably software ecosystem. The ecosystem transforms raw content into polished educational material across three distinct vectors:
-- **YouTube Content Generation** (`ytc.enjoyably.app`)
-- **Course Generation** (`courses.enjoyably.app`)
-- **Internal Training Generation** (`internal.enjoyably.app`)
+- **YouTube Content Generation** (`/ytc`)
+- **Course Generation** (`/courses`)
+- **Internal Training Generation** (`/work`)
 
 ## 2. Target Audience
 Creators, educators, business trainers, and content marketers looking to automate the conversion of their knowledge into structured, engaging formats.
@@ -21,6 +21,11 @@ Creators, educators, business trainers, and content marketers looking to automat
   - **Wisdom Indigo** (`#4F4F6E5`): Core brand secondary accent
   - **Optimistic Yellow** (`#F59E0B`): Secondary accent (used sparingly for 'spark' moments)
   - **Lighter Modal/Card BG** (`#374151`)
+  - **Primary Hover** (`#0D9488`): Darkened primary for hover states
+  - **Primary Light** (`#2DD4BF`): Lighter teal for gradients
+  - **Accent Light** (`#818CF8`): Lighter indigo for Courses gradients
+  - **Spark Light** (`#FBBF24`): Lighter amber for Work gradients
+  - **Icon BG From/To** (`#2D3748` → `#1A202C`): Gradient for icon containers
 - **Typography**: `Inter` font family everywhere.
   - Headings: Bold/Semi-bold
   - UI Elements: Medium
@@ -42,7 +47,13 @@ Creators, educators, business trainers, and content marketers looking to automat
    - Visual element (abstract 3D graphic, dashboard mockup, or code-generated animation).
 3. **The Enjoyably Ecosystem (App Gateway)**
    - Interactive UI cards linking to the 3 main sub-apps.
-   - Each card must visually depict the flavor of the specific application and contain explicit outbound links to `ytc.`, `courses.`, and `internal.` subdomains.
+   - Each card must visually depict the flavor of the specific application and contain internal route links to `/ytc`, `/courses`, and `/work`.
+
+### Sub-App Pages (`/ytc`, `/courses`, `/work`)
+Each sub-app landing page follows a consistent 3-section layout:
+1. **Animated Hero** — Gradient text headline with page-specific accent color, status badge, background glow, dual CTAs.
+2. **Features Grid** — 3 glassmorphism cards with SVG icons, staggered Framer Motion entrance animations.
+3. **Waitlist CTA** — Email capture form with background glow orbs and "Back to Ecosystem" link.
 4. **How It Works (Features)**
    - 3-step visualization: Input Content -> AI Processing -> Export Format.
 5. **Global Footer**
