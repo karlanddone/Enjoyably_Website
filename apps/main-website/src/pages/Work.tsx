@@ -1,7 +1,50 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, type Variants } from 'framer-motion';
+import { WAITLIST_SCRIPT_URL } from '../config';
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZ6E3lYBdHBTIHaoFJ_vqzMAb6CLDT_hOmNobY-8zNEu20b5thWVsUID06SZMNvnFf/exec";
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
+const features = [
+    {
+        title: 'Document Intelligence',
+        description: 'Ingest SOPs, handbooks, policy documents, and tribal knowledge. The engine extracts key concepts and structures them into teachable units automatically.',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" /><path d="M9 15l2 2 4-4" />
+            </svg>
+        )
+    },
+    {
+        title: 'Personalized Paths',
+        description: "Generate role-specific training tracks that adapt to each employee's department, skill level, and learning pace — no two paths are the same.",
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="8.5" cy="7" r="4" /><polyline points="17 11 19 13 23 9" />
+            </svg>
+        )
+    },
+    {
+        title: 'Compliance Tracking',
+        description: 'Built-in progress analytics, certification tracking, and completion reports designed for HR and compliance teams to audit and verify training outcomes.',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" />
+            </svg>
+        )
+    }
+];
 
 export const Work: React.FC = () => {
     const [email, setEmail] = useState("");
@@ -14,7 +57,7 @@ export const Work: React.FC = () => {
         try {
             const formData = new URLSearchParams();
             formData.append("email", `${email} [Source: Work Landing Page]`);
-            await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: formData.toString() });
+            await fetch(WAITLIST_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: formData.toString() });
             setStatus("success");
             setEmail("");
             setTimeout(() => setStatus("idle"), 4000);
@@ -26,65 +69,90 @@ export const Work: React.FC = () => {
     };
 
     return (
-        <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center py-24 text-center">
-            <div className="w-24 h-24 bg-[#1E293B] rounded-3xl flex items-center justify-center mb-8 border border-white/5 shadow-inner">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-muted">
-                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-                    <path d="M9 22v-4h6v4" />
-                    <path d="M8 6h.01" /><path d="M16 6h.01" /><path d="M12 6h.01" />
-                    <path d="M12 10h.01" /><path d="M12 14h.01" />
-                    <path d="M16 10h.01" /><path d="M16 14h.01" />
-                    <path d="M8 10h.01" /><path d="M8 14h.01" />
-                </svg>
-            </div>
-
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-brand-high mb-6 opacity-80">
-                Enjoyably <span className="text-brand-muted">Work</span>
-            </h1>
-
-            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/30 text-brand-primary font-medium tracking-wide text-sm mb-12">
-                <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
-                In Active Development
-            </div>
-
-            <p className="text-xl md:text-2xl text-brand-muted max-w-2xl font-light leading-relaxed mb-12">
-                The platform for transforming your company documents into personalized internal training is currently under construction.
-            </p>
-
-            <div className="bg-brand-modal/30 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 w-full max-w-2xl text-center shadow-2xl">
-                <h2 className="text-2xl font-bold text-brand-high mb-4">Request Early Access</h2>
-                <p className="text-brand-muted mb-8">
-                    Join the waitlist to be notified the moment Enjoyably Work enters Beta testing.
-                </p>
-                <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto" onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        placeholder={status === 'success' ? "Successfully added to waitlist!" : status === 'error' ? "Error. Try again." : "Enter your email address"}
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={status === 'submitting' || status === 'success'}
-                        className={`flex-grow px-6 py-4 rounded-full bg-brand-bg/50 border text-brand-high focus:outline-none focus:ring-2 transition-all disabled:opacity-50 ${status === 'success' ? 'border-green-500/50 focus:ring-green-500/50 placeholder:text-green-500' : status === 'error' ? 'border-red-500/50 focus:ring-red-500/50 placeholder:text-red-500' : 'border-white/10 focus:ring-brand-primary/50 placeholder:text-brand-muted'}`}
-                    />
-                    <button
-                        type="submit"
-                        disabled={status === 'submitting' || status === 'success'}
-                        className="whitespace-nowrap rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-[#0D9488] hover:scale-105 transition-all duration-300 disabled:opacity-75 disabled:hover:scale-100 flex justify-center items-center min-w-[140px]"
-                    >
-                        {status === 'submitting' ? (
-                            <svg className="animate-spin h-5 w-5 text-brand-bg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                        ) : status === 'success' ? "✓ Added" : "Join Waitlist"}
-                    </button>
-                </form>
-                <div className="mt-8 pt-6 border-t border-white/5">
-                    <Link to="/" className="text-sm font-semibold text-brand-muted hover:text-brand-high transition-colors">
-                        &larr; Back to Ecosystem
-                    </Link>
+        <div className="w-full">
+            {/* ── Hero Section ── */}
+            <section className="relative px-6 py-20 sm:py-32 lg:px-8 overflow-hidden">
+                <div className="absolute inset-x-0 top-1/3 -z-10 flex justify-center overflow-hidden pointer-events-none opacity-30">
+                    <div className="w-[150%] max-w-5xl flex-none bg-gradient-to-r from-brand-spark to-brand-primary opacity-40 blur-[100px] aspect-[1155/678]" />
                 </div>
-            </div>
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mx-auto max-w-4xl text-center">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-spark/10 border border-brand-spark/30 text-brand-spark font-medium tracking-wide text-sm mb-8">
+                        <span className="w-2 h-2 rounded-full bg-brand-spark animate-pulse"></span>
+                        In Active Development
+                    </div>
+                    <h1 className="text-5xl font-extrabold tracking-tight text-brand-high sm:text-7xl leading-tight">
+                        Enjoyably{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-spark via-brand-spark-light to-brand-primary drop-shadow-sm">Work</span>
+                    </h1>
+                    <p className="mt-6 text-xl leading-relaxed text-brand-muted max-w-2xl mx-auto font-light">
+                        Transform standard company documents into personalized, trackable, and engaging internal training modules. Onboarding, compliance, and upskilling — reimagined.
+                    </p>
+                    <div className="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#waitlist" className="rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-brand-primary-hover hover:scale-105 hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">
+                            Join the Waitlist
+                        </a>
+                        <a href="#features" className="text-sm font-semibold leading-6 text-brand-muted hover:text-brand-high flex items-center gap-2 group transition-colors">
+                            See what it does <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* ── Features Section ── */}
+            <section id="features" className="py-24 sm:py-32 relative">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-border/40 to-transparent" />
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div className="mx-auto max-w-2xl lg:text-center">
+                        <h2 className="text-base font-semibold leading-7 text-brand-primary tracking-wide uppercase">Capabilities</h2>
+                        <p className="mt-2 text-3xl font-bold tracking-tight text-brand-high sm:text-4xl">Enterprise training, automated</p>
+                        <p className="mt-6 text-lg leading-8 text-brand-muted">From HR handbooks to technical SOPs — the Work engine turns static documents into dynamic, trackable learning experiences.</p>
+                    </div>
+                    <motion.div variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+                        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
+                            {features.map((feature) => (
+                                <motion.div variants={itemVariants} key={feature.title} className="flex flex-col relative overflow-hidden group rounded-3xl">
+                                    <div className="flex flex-col h-full bg-brand-modal/30 backdrop-blur-xl border border-white/5 rounded-3xl p-10 shadow-2xl shadow-black/50 hover:bg-brand-modal/50 hover:border-brand-primary/30 hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] transition-all duration-500 hover:-translate-y-2 relative">
+                                        <div className="absolute -right-20 -top-20 bg-brand-spark/10 w-48 h-48 rounded-full blur-3xl group-hover:bg-brand-spark/20 transition-all duration-700 pointer-events-none" />
+                                        <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-brand-icon-from to-brand-icon-to rounded-2xl border border-white/10 group-hover:border-brand-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-inner text-brand-primary mb-6">
+                                            {feature.icon}
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-brand-high mb-3 group-hover:text-brand-primary transition-colors duration-300">{feature.title}</h3>
+                                        <p className="text-brand-muted/90 leading-relaxed font-light flex-auto">{feature.description}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </dl>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ── Waitlist CTA Section ── */}
+            <section id="waitlist" className="py-24 sm:py-32 relative">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-border/40 to-transparent" />
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mx-auto max-w-2xl px-6">
+                    <div className="bg-brand-modal/30 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 w-full text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute -right-24 -bottom-24 bg-brand-spark/10 w-64 h-64 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute -left-24 -top-24 bg-brand-primary/10 w-64 h-64 rounded-full blur-3xl pointer-events-none" />
+                        <h2 className="text-2xl font-bold text-brand-high mb-4 relative">Request Early Access</h2>
+                        <p className="text-brand-muted mb-8 relative">Join the waitlist to be notified the moment Enjoyably Work enters Beta testing.</p>
+                        <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto relative" onSubmit={handleSubmit}>
+                            <input type="email" placeholder={status === 'success' ? "Successfully added!" : status === 'error' ? "Error. Try again." : "Enter your email address"} required value={email} onChange={(e) => setEmail(e.target.value)} disabled={status === 'submitting' || status === 'success'}
+                                className={`flex-grow px-6 py-4 rounded-full bg-brand-bg/50 border text-brand-high focus:outline-none focus:ring-2 transition-all disabled:opacity-50 ${status === 'success' ? 'border-green-500/50 focus:ring-green-500/50 placeholder:text-green-500' : status === 'error' ? 'border-red-500/50 focus:ring-red-500/50 placeholder:text-red-500' : 'border-white/10 focus:ring-brand-primary/50 placeholder:text-brand-muted'}`}
+                            />
+                            <button type="submit" disabled={status === 'submitting' || status === 'success'}
+                                className="whitespace-nowrap rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-brand-primary-hover hover:scale-105 transition-all duration-300 disabled:opacity-75 disabled:hover:scale-100 flex justify-center items-center min-w-[140px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
+                            >
+                                {status === 'submitting' ? (
+                                    <svg className="animate-spin h-5 w-5 text-brand-bg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                ) : status === 'success' ? "✓ Added" : "Join Waitlist"}
+                            </button>
+                        </form>
+                        <div className="mt-8 pt-6 border-t border-white/5 relative">
+                            <Link to="/" className="text-sm font-semibold text-brand-muted hover:text-brand-high transition-colors">&larr; Back to Ecosystem</Link>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
         </div>
     );
 };

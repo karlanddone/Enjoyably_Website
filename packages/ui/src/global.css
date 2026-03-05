@@ -8,6 +8,12 @@
   --color-brand-accent: #4F46E5;
   --color-brand-spark: #F59E0B;
   --color-brand-modal: #374151;
+  --color-brand-primary-hover: #0D9488;
+  --color-brand-primary-light: #2DD4BF;
+  --color-brand-accent-light: #818CF8;
+  --color-brand-spark-light: #FBBF24;
+  --color-brand-icon-from: #2D3748;
+  --color-brand-icon-to: #1A202C;
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
