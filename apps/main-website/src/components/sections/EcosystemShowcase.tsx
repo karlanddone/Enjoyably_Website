@@ -43,21 +43,21 @@ const apps = [
     {
         name: 'Enjoyably Courses',
         description: 'Instantly generate structured, multi-module learning courses and quizzes from raw text, videos, or PDFs.',
-        url: 'http://localhost:3002',
+        url: '/courses',
         icon: <BookIcon />,
         status: 'In Development'
     },
     {
         name: 'Enjoyably YouTube',
         description: 'Convert scripts and outlines into optimized long-form educational video scripts, title variations, and assets.',
-        url: 'http://localhost:3001',
+        url: '/ytc',
         icon: <PlayIcon />,
         status: 'First Available'
     },
     {
         name: 'Enjoyably Work',
         description: 'Transform standard company documents into personalized, trackable, and engaging internal training modules.',
-        url: 'http://localhost:3003',
+        url: '/work',
         icon: <BuildingIcon />,
         status: 'In Development'
     }

@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20 relative">
                     {/* Left side: Logo */}
-                    <a href="http://localhost:5173/" className="flex-shrink-0 flex items-center gap-1 z-10 group">
+                    <a href="/" className="flex-shrink-0 flex items-center gap-1 z-10 group">
                         <span className="text-3xl font-extrabold text-brand-high tracking-tighter group-hover:text-brand-primary transition-colors">Enjoyably</span>
                         <span className="text-brand-primary font-bold text-4xl leading-none -mt-1.5 group-hover:animate-pulse">.</span>
                     </a>
