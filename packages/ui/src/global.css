@@ -1,0 +1,19 @@
+@theme {
+  --color-brand-bg: #1F2937;
+  --color-brand-fg: #F9FAFB;
+  --color-brand-high: #FFFFFF;
+  --color-brand-muted: #6B7280;
+  --color-brand-border: #E5E7EB;
+  --color-brand-primary: #14B8A6;
+  --color-brand-accent: #4F46E5;
+  --color-brand-spark: #F59E0B;
+  --color-brand-modal: #374151;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-fg font-sans antialiased;
+  }
+}

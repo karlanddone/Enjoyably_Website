@@ -34,6 +34,9 @@
   Docs: Updated ARCHITECTURE.md with new route
   ```
 
+## Design & UI Guidelines
+- **No Emojis**: NEVER use emojis as UI icons or generic placeholders. Always use or create custom, scalable SVG icons that fit the specific brand theme and aesthetic.
+
 ## Centralization & Single Source of Truth
 - **Never Hardcode Variables**: Do not hardcode recurring strings, colors, configuration endpoints, or theme logic deep into individual components.
 - App-wide state, environment variables, and visual design tokens MUST be maintained in a single centralized location (e.g., a `.env` file, a global `theme.ts` file, or a global context provider) and referenced from there.
