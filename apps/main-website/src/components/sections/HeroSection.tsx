@@ -24,7 +24,7 @@ export const HeroSection: React.FC = () => {
                 </h1>
                 <p className="mt-6 text-xl leading-relaxed text-brand-muted max-w-2xl mx-auto font-light">
                     AI should understand how people learn, not just what they are taught.
-                    Build the world&apos;s most effective and personalized learning experiences—automatically.
+                    Build the world&apos;s most effective and personalized learning experiences automatically.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#ecosystem" className="rounded-full bg-brand-primary px-8 py-4 text-sm font-bold text-brand-bg shadow-[0_0_30px_rgba(20,184,166,0.3)] hover:bg-[#0D9488] hover:scale-105 hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">

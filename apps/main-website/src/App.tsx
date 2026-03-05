@@ -1,14 +1,21 @@
-import { MainLayout } from './components/layout/MainLayout'
-import { HeroSection } from './components/sections/HeroSection'
-import { EcosystemShowcase } from './components/sections/EcosystemShowcase'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MainLayout } from './components/layout/MainLayout';
+import { Home } from './pages/Home';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
 
 function App() {
   return (
-    <MainLayout>
-      <HeroSection />
-      <EcosystemShowcase />
-    </MainLayout>
-  )
+    <Router>
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+        </Routes>
+      </MainLayout>
+    </Router>
+  );
 }
 
-export default App
+export default App;

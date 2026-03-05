@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "../../../packages/ui/src/global.css";
+
+@source "../../../packages/ui/src";
+@source "../index.html";
+@source "../src";

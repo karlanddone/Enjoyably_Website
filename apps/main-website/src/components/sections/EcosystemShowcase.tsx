@@ -43,20 +43,23 @@ const apps = [
     {
         name: 'Enjoyably Courses',
         description: 'Instantly generate structured, multi-module learning courses and quizzes from raw text, videos, or PDFs.',
-        url: 'https://courses.enjoyably.app',
-        icon: <BookIcon />
+        url: 'http://localhost:3002',
+        icon: <BookIcon />,
+        status: 'In Development'
     },
     {
         name: 'Enjoyably YouTube',
         description: 'Convert scripts and outlines into optimized long-form educational video scripts, title variations, and assets.',
-        url: 'https://ytc.enjoyably.app',
-        icon: <PlayIcon />
+        url: 'http://localhost:3001',
+        icon: <PlayIcon />,
+        status: 'First Available'
     },
     {
-        name: 'Enjoyably Internal',
+        name: 'Enjoyably Work',
         description: 'Transform standard company documents into personalized, trackable, and engaging internal training modules.',
-        url: 'https://internal.enjoyably.app',
-        icon: <BuildingIcon />
+        url: 'http://localhost:3003',
+        icon: <BuildingIcon />,
+        status: 'In Development'
     }
 ];
 
@@ -84,26 +87,33 @@ export const EcosystemShowcase: React.FC = () => {
                             <motion.div
                                 variants={itemVariants}
                                 key={app.name}
-                                className="flex flex-col bg-brand-modal/30 backdrop-blur-xl border border-white/5 rounded-3xl p-10 shadow-2xl shadow-black/50 hover:bg-brand-modal/50 hover:border-brand-primary/30 hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] transition-all duration-500 hover:-translate-y-2 group relative overflow-hidden"
+                                className="flex flex-col relative overflow-hidden group rounded-3xl"
                             >
-                                <div className="absolute -inset-0.5 bg-gradient-to-br from-brand-primary/0 to-brand-accent/0 group-hover:from-brand-primary/10 group-hover:to-brand-accent/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
-                                <div className="absolute -right-20 -top-20 bg-brand-primary/10 w-48 h-48 rounded-full blur-3xl group-hover:bg-brand-primary/20 transition-all duration-700 pointer-events-none" />
+                                <a href={app.url} className="flex flex-col h-full bg-brand-modal/30 backdrop-blur-xl border border-white/5 rounded-3xl p-10 shadow-2xl shadow-black/50 hover:bg-brand-modal/50 hover:border-brand-primary/30 hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] transition-all duration-500 hover:-translate-y-2 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg">
+                                    <div className="absolute -inset-0.5 bg-gradient-to-br from-brand-primary/0 to-brand-accent/0 group-hover:from-brand-primary/10 group-hover:to-brand-accent/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
+                                    <div className="absolute -right-20 -top-20 bg-brand-primary/10 w-48 h-48 rounded-full blur-3xl group-hover:bg-brand-primary/20 transition-all duration-700 pointer-events-none" />
 
-                                <dt className="flex items-center gap-x-4 text-2xl font-bold text-brand-high">
-                                    <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#2D3748] to-[#1A202C] rounded-2xl border border-white/10 group-hover:border-brand-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-inner">
-                                        {app.icon}
+                                    <div className="flex items-start justify-between mb-6">
+                                        <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#2D3748] to-[#1A202C] rounded-2xl border border-white/10 group-hover:border-brand-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-inner text-brand-high">
+                                            {app.icon}
+                                        </div>
+                                        <div className={`px-3 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full border ${app.status === 'First Available' ? 'bg-brand-primary/10 border-brand-primary/30 text-brand-primary' : 'bg-white/5 border-white/10 text-brand-muted/70'}`}>
+                                            {app.status}
+                                        </div>
                                     </div>
-                                    <span className="tracking-tight">{app.name}</span>
-                                </dt>
-                                <dd className="mt-6 flex flex-auto flex-col text-base leading-relaxed text-brand-muted/90 font-light">
-                                    <p className="flex-auto">{app.description}</p>
-                                    <div className="mt-8 pt-6 border-t border-white/5 group-hover:border-brand-primary/20 transition-colors">
-                                        <a href={app.url} className="text-sm font-semibold leading-6 text-brand-primary hover:text-[#2DD4BF] transition-colors flex items-center gap-2 group/link w-fit">
-                                            Open Application
-                                            <span aria-hidden="true" className="group-hover/link:translate-x-2 transition-transform duration-300">→</span>
-                                        </a>
+
+                                    <h3 className="text-2xl font-bold text-brand-high tracking-tight mb-2 group-hover:text-brand-primary transition-colors duration-300">{app.name}</h3>
+
+                                    <div className="mt-4 flex flex-auto flex-col text-base leading-relaxed text-brand-muted/90 font-light">
+                                        <p className="flex-auto">{app.description}</p>
+                                        <div className="mt-8 pt-6 border-t border-white/5 group-hover:border-brand-primary/20 transition-colors">
+                                            <span className="text-sm font-semibold leading-6 text-brand-primary group-hover:text-[#2DD4BF] transition-colors flex items-center gap-2 group/link w-fit">
+                                                Open Application
+                                                <span aria-hidden="true" className="group-hover/link:translate-x-2 transition-transform duration-300">→</span>
+                                            </span>
+                                        </div>
                                     </div>
-                                </dd>
+                                </a>
                             </motion.div>
                         ))}
                     </dl>
